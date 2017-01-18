@@ -1,0 +1,31 @@
+Config { font = "xft:Ubuntu Mono-10"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "#444444"
+       , fgColor = "#DCDCDC"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Network "eno1" ["-L","0","-H","32", "--normal","green","--high","red"] 10
+                    , Run Network "wlp2s0" ["-L","0","-H","32", "--normal","green","--high","red"] 10
+                    , Run Network "tun0" ["-L","0","-H","32", "--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50", "--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10 , Run Swap [] 10
+                    , Run BatteryP ["BAT0"] [] 100
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Com "/home/bas/dev/private/xmonad/printvolume.sh" [] "volume" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %eno1% - %wlp2s0% - %tun0% }\
+                    \{ <fc=#ee9a00>%date%</fc> | Master volume: %volume% |  %battery%"
+       }
