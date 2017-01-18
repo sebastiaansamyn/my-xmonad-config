@@ -32,7 +32,7 @@ main = do
          modMask = mod4Mask, 
          startupHook = do
                  setWMName "LG3D"
-                 spawn "trayer --align right --SetDockType true --SetPartialStrut true --height 15 --tint 0x333333 --transparent true --alpha 0"
+                 spawn "~/.xmonad/start_trayer.sh"
                  spawn "nm-applet"
          } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock"),
